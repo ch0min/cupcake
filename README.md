@@ -9,7 +9,7 @@ Datamatikeruddannelsen i Lyngby og på Bornholm forår 2022.
 
 1. Først skal du clone projektet eller downloade en zip-fil med projektet til din arbejdsstation.
 2. Beslut dig for hvad projektets database skal hedde. Det skal du bruge i næste punkt.
-3. Åbn Workbench og kør en tilpasset (med dit databasenavn i stedet for `startcode`) version af sql-filen `cupcake.sql`, som ligger i mappen `resources`. Den opretter en database med en user-tabel og en test-database.
+3. Åbn Workbench og kør en tilpasset (med dit databasenavn i stedet for `startcode`) version af sql-filen `orderLine.sql`, som ligger i mappen `resources`. Den opretter en database med en user-tabel og en test-database.
 4. Du skal evt. ændre kodeord til databasen i projektet. Det gøres i filerne: `/persistence/ConnectionPool` i linie 14 og 15. Du skal også ændre i UserMapperTest.
 5. Til sidst skal du lave en Tomcat konfiguration. Dvs, 
    1. klik på "Add Configuration ..."

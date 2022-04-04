@@ -6,19 +6,19 @@ import java.util.Objects;
 
 public class Order {
     private int order_id;
-    private List<Cupcake> cupcakeList = new ArrayList<>();
+    private List<OrderLine> orderLineList = new ArrayList<>();
     private int totalPrice;
     private User user;
 
-    public Order(int order_id, List<Cupcake> cupcakeList, int totalPrice) {
+    public Order(int order_id, List<OrderLine> orderLineList, int totalPrice) {
         this.order_id = order_id;
-        this.cupcakeList = cupcakeList;
+        this.orderLineList = orderLineList;
         this.totalPrice = totalPrice;
     }
 
-    public Order(int order_id, List<Cupcake> cupcakeList, int totalPrice, User user) {
+    public Order(int order_id, List<OrderLine> orderLineList, int totalPrice, User user) {
         this.order_id = order_id;
-        this.cupcakeList = cupcakeList;
+        this.orderLineList = orderLineList;
         this.totalPrice = totalPrice;
         this.user = user;
     }
@@ -27,8 +27,8 @@ public class Order {
         return order_id;
     }
 
-    public List<Cupcake> getCupcakeList() {
-        return cupcakeList;
+    public List<OrderLine> getCupcakeList() {
+        return orderLineList;
     }
 
     public int getTotalPrice() {
@@ -43,8 +43,8 @@ public class Order {
         this.order_id = order_id;
     }
 
-    public void setCupcakeList(List<Cupcake> cupcakeList) {
-        this.cupcakeList = cupcakeList;
+    public void setCupcakeList(List<OrderLine> orderLineList) {
+        this.orderLineList = orderLineList;
     }
 
     public void setTotalPrice(int totalPrice) {
@@ -59,7 +59,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "order_id=" + order_id +
-                ", cupcakeList=" + cupcakeList +
+                ", cupcakeList=" + orderLineList +
                 ", totalPrice=" + totalPrice +
                 ", user=" + user +
                 '}';

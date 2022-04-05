@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dat</groupId>
-    <artifactId>orderLine</artifactId>
+    <artifactId>cupcake</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>orderLine</name>
+    <name>cupcake</name>
     <packaging>war</packaging>
 
     <properties>

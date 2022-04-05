@@ -13,6 +13,9 @@
     </jsp:attribute>
 
     <jsp:body>
+        <form action="CupcakeServlet">
+            <input type="submit" value="buy cupcake!!!">
+        </form>
 
         <p>Startcode for 2nd semester </p>
 

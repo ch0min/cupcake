@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "addToShoppingCart", value = "/addToShoppingCart")
-public class addToShoppingCart extends HttpServlet {
+public class AddToShoppingCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -24,8 +24,8 @@ public class addToShoppingCart extends HttpServlet {
 
         log(ol.toString());
 
-//        request.setAttribute("orderline", ol);
-//        request.getRequestDispatcher("").forward(request, response);
+        request.setAttribute("orderLine", ol);
+        request.getRequestDispatcher("WEB-INF/cart").forward(request, response);
 
     }
 

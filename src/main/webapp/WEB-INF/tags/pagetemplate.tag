@@ -68,7 +68,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
                             <c:if test="${sessionScope.user != null }">
-                                <a class="nav-link" href="#"><span class="sr-only">${sessionScope.user.username}</span></a>
+                                <a class="nav-link"><span class="sr-only">${sessionScope.user.username}</span></a>
                             </c:if>
                         </li>
                         <li class="nav-item">

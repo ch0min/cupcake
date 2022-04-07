@@ -67,7 +67,17 @@
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Email <span class="sr-only"></span></a>
+                            <c:if test="${sessionScope.user != null }">
+                                <a class="nav-link"><span class="sr-only">${sessionScope.user.username}</span></a>
+                            </c:if>
+                        </li>
+                        <li class="nav-item">
+                            <c:if test="${sessionScope.user == null }">
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                            </c:if>
+                            <c:if test="${sessionScope.user != null }">
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                            </c:if>
                         </li>
                         <li class="nav-item">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>

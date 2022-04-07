@@ -65,10 +65,10 @@ public class CupcakeMapper {
 
     public boolean safeOrderDB(Order order) throws DatabaseException {
             Logger.getLogger("web").log(Level.INFO, "");
-            String sql = "insert into `order`(totalprice) values (?)";
+            String sql = "insert into 'order' (totalprice) values (?)";
             try (Connection connection = connectionPool.getConnection()) {
                 try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                    ps.setInt(1, order.getTotalPrice());
+                    ps.setInt(1, order.getTotalprice());
                     int rowsAffected = ps.executeUpdate();
                     if (rowsAffected == 1) {
 

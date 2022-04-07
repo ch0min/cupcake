@@ -1,6 +1,7 @@
 package dat.startcode.model.persistence;
 
 
+import dat.startcode.model.entities.Order;
 import dat.startcode.model.entities.OrderLine;
 import dat.startcode.model.exceptions.DatabaseException;
 
@@ -48,5 +49,38 @@ public class OrderMapper implements IOrderMapper {
         }
         return orderLineList;
     }
+
+    @Override
+    public List<Order> retrieveAllUsersAndOrders() throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        List<Order> orderList = new ArrayList<>();
+
+        String sql = "SELECT order_id, username, totalprice, u.role " +
+                "FROM cupcake.order " +
+                "INNER JOIN cupcake.user u " +
+                "USING(username)";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int order_id = rs.getInt("order_id");
+                    String username = rs.getString("username");
+                    int totalprice = rs.getInt("totalprice");
+                    String role = rs.getString("role");
+                    Order order = new Order(order_id, username, totalprice, role);
+                    orderList.add(order);
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Fejl under indlæsning af order og user fra databasen");
+        }
+        return orderList;
+    }
+
+
 }
 

@@ -5,16 +5,21 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Velkommen ombord
+
+        <h3>Øens bedste cupcakes. vælg og bestil her:</h3>
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+
     </jsp:attribute>
 
     <jsp:body>
+        <form action="CupcakeServlet">
+            <input type="submit" value="buy cupcake!!!">
+        </form>
 
-        <p>Startcode for 2nd semester </p>
+
 
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>

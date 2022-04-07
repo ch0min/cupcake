@@ -6,6 +6,7 @@ public class OrderLine {
     private int orderline_id;
     private String topping;
     private String bottom;
+    private int order_id;
     private int totalPrice;
     private int quantity;
 
@@ -16,59 +17,71 @@ public class OrderLine {
         this.quantity = quantity;
     }
 
-    public OrderLine(int orderline_id, String topping, String bottom, int totalPrice, int quantity) {
+    public OrderLine(int orderline_id, String bottom, String topping, int quantity, int order_id, int totalPrice) {
         this.orderline_id = orderline_id;
-        this.topping = topping;
         this.bottom = bottom;
-        this.totalPrice = totalPrice;
+        this.topping = topping;
         this.quantity = quantity;
+        this.order_id = order_id;
+        this.totalPrice = totalPrice;
+
     }
 
     public int getOrderline_id() {
         return orderline_id;
     }
 
-    public String getTopping() {
-        return topping;
-    }
-
-    public String getBottom() {
-        return bottom;
-    }
-
-    public int gettotalPrice() {
-        return totalPrice;
-    }
-
-    public int getquantity() {
-        return quantity;
-    }
-
     public void setOrderline_id(int orderline_id) {
         this.orderline_id = orderline_id;
+    }
+
+    public String getTopping() {
+        return topping;
     }
 
     public void setTopping(String topping) {
         this.topping = topping;
     }
 
+    public String getBottom() {
+        return bottom;
+    }
+
     public void setBottom(String bottom) {
         this.bottom = bottom;
     }
 
-    public void settotalPrice(int totalPrice) {
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public void setquantity(int quantity) {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
     @Override
     public String toString() {
-        return "Cupcake{" +
-                "topping='" + topping + '\'' +
+        return "OrderLine{" +
+                "orderline_id=" + orderline_id +
+                ", topping='" + topping + '\'' +
                 ", bottom='" + bottom + '\'' +
+                ", order_id=" + order_id +
                 ", totalPrice=" + totalPrice +
                 ", quantity=" + quantity +
                 '}';
@@ -79,13 +92,12 @@ public class OrderLine {
         if (this == o) return true;
         if (!(o instanceof OrderLine)) return false;
         OrderLine orderLine = (OrderLine) o;
-        return gettotalPrice() == orderLine.gettotalPrice() && getquantity() == orderLine.getquantity() && Objects.equals(getTopping(), orderLine.getTopping()) && Objects.equals(getBottom(), orderLine.getBottom());
+        return getOrderline_id() == orderLine.getOrderline_id() && getOrder_id() == orderLine.getOrder_id() && getTotalPrice() == orderLine.getTotalPrice() && getQuantity() == orderLine.getQuantity() && Objects.equals(getTopping(), orderLine.getTopping()) && Objects.equals(getBottom(), orderLine.getBottom());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTopping(), getBottom(), gettotalPrice(), getquantity());
+        return Objects.hash(getOrderline_id(), getTopping(), getBottom(), getOrder_id(), getTotalPrice(), getQuantity());
     }
 }
-
 

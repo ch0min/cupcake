@@ -37,7 +37,7 @@
                         <td>${orderLine.order_id}</td>
                         <td>${orderLine.totalPrice}</td>
                         <td>
-                            <button name="fjern" value="${orderLine.orderline_id}" formaction="">fjern</button>
+                            <button name="fjern" value="${orderLine.orderline_id}" formaction="removefromcart">fjern</button>
                         </td>
                     </tr>
                 </c:forEach>

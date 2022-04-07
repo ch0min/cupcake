@@ -48,5 +48,27 @@ public class OrderMapper implements IOrderMapper {
         }
         return orderLineList;
     }
+
+    @Override
+    public boolean removeOrderline(int orderline_id) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        String sql = "delete from orderline where orderline_id = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderline_id);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                } else {
+                    throw new DatabaseException("Order med orderline_id " + orderline_id + " kunne ikke fjernes");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            throw new DatabaseException("Order med orderline_id " + orderline_id + " kunne ikke fjernes");
+        }
+        return result;
+    }
 }
 

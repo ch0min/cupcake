@@ -5,25 +5,50 @@
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-    <jsp:attribute name="header">
-             Login
+    <jsp:attribute name="style">
+
+        .form{
+            max-width:400px;
+        }
+
+        input{
+            margin-bottom:4px;
+        }
+
+        .form-control{
+            border-radius:0px;
+        }
+
+        .form-control:focus{
+            box-shadow: none !important;
+        }
+
+        .btn-primary{
+            border-radius:0px;
+            width:20%;
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .opretBruger{
+            text-decoration-line:none;
+        }
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-            Login
-    </jsp:attribute>
+
 
     <jsp:body>
-
-        <h3>You can log in here</h3>
-
-        <form action="login" method="post">
-            <label for="username">Username: </label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="password"/>
-            <input type="submit"  value="Log in"/>
-        </form>
-
+        <div class="form mx-auto">
+            <h1>Log ind</h1>
+            <form action="login" method="post">
+                <label for="username">Email: </label>
+                <input type="text" class="form-control" required placeholder="Eksempel@gmail.com" autocomplete="off" id="username" name="username"/>
+                <label for="password">Kode: </label>
+                <input type="password" class="form-control" required placeholder="Kode" id="password" name="password"/>
+                <input type="submit" class="btn btn-primary " value="Log ind"/>
+                <a href="opret.jsp" class="opretBruger">Opret bruger</a>
+            </form>
+        </div>
     </jsp:body>
 </t:pagetemplate>

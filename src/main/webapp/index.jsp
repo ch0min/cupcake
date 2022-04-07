@@ -6,8 +6,6 @@
 <t:pagetemplate>
     <jsp:attribute name="header">
          Velkommen ombord
-
-        <h3>Øens bedste cupcakes. vælg og bestil her:</h3>
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -15,6 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        <h3>Øens bedste cupcakes. Vælg og bestil her:</h3>
         <form action="CupcakeServlet">
             <input type="submit" value="buy cupcake!!!">
         </form>

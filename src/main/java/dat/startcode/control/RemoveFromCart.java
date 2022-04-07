@@ -1,6 +1,7 @@
 package dat.startcode.control;
 
 import dat.startcode.model.config.ApplicationStart;
+import dat.startcode.model.entities.OrderLine;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.OrderMapper;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,16 +28,26 @@ public class RemoveFromCart extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String idString = request.getParameter("fjern");
         int orderline_id = Integer.parseInt(idString);
-        OrderMapper orderMapper = new OrderMapper(connectionPool);
-        try {
-            orderMapper.removeOrderline(orderline_id);
-        } catch (DatabaseException e) {
-            Logger.getLogger("web").log(Level.SEVERE, e.getMessage());
-            request.setAttribute("errormessage", e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }
+
+        List<OrderLine> ol = (List<OrderLine>) request.getSession().getAttribute("orderLineList");
+        int price = (int) request.getSession().getAttribute("price");
+        price = price - ol.get(orderline_id).getTotalPrice();
+        ol.remove(orderline_id);
+
+        request.getSession().setAttribute("orderLineList", ol);
+        request.getSession().setAttribute("price", price);
+
+//        OrderMapper orderMapper = new OrderMapper(connectionPool);
+//        try {
+//            orderMapper.removeOrderline(orderline_id);
+//        } catch (DatabaseException e) {
+//            Logger.getLogger("web").log(Level.SEVERE, e.getMessage());
+//            request.setAttribute("errormessage", e.getMessage());
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
         request.getRequestDispatcher("cart").forward(request, response);
     }
 }

@@ -30,14 +30,14 @@
                 <tbody>
                 <c:forEach var="orderLine" items="${sessionScope.orderLineList}">
                     <tr>
-                        <td>${orderLine.orderline_id}</td>
+                        <td>${sessionScope.orderLineList.indexOf(orderLine)+1}</td>
                         <td>${orderLine.bottom}</td>
                         <td>${orderLine.topping}</td>
                         <td>${orderLine.quantity}</td>
                         <td>${orderLine.order_id}</td>
                         <td>${orderLine.totalPrice*orderLine.quantity}</td>
                         <td>
-                            <button name="fjern" value="${orderLine.bottom} ${orderLine.topping}" formaction="removefromcart">fjern</button>
+                            <button name="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}" formaction="removefromcart">fjern</button>
                         </td>
                     </tr>
                 </c:forEach>

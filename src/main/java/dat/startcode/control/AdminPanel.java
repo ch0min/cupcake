@@ -1,6 +1,7 @@
 package dat.startcode.control;
 
 import dat.startcode.model.config.ApplicationStart;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.AdminMapper;
 import dat.startcode.model.persistence.ConnectionPool;
@@ -28,7 +29,13 @@ public class AdminPanel extends HttpServlet {
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("WEB-INF/adminpanel.jsp").forward(request, response);
+
+        User user = (User) request.getSession().getAttribute("user");
+        if(user.getRole().equals("admin")){
+            request.getRequestDispatcher("WEB-INF/adminpanel.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("/index.jsp");
+        }
     }
 
     @Override

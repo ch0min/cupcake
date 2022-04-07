@@ -7,35 +7,14 @@
 <t:pagetemplate>
     <jsp:attribute name="style">
 
-        .form{
-            max-width:400px;
-        }
-
-        input{
-            margin-bottom:4px;
-        }
-
-        .form-control{
-            border-radius:0px;
-        }
-
-        .form-control:focus{
-            box-shadow: none !important;
-        }
-
-        .btn-primary{
-            border-radius:0px;
-            width:20%;
-            display:block;
-            margin-left:auto;
-            margin-right:auto;
-        }
-
     </jsp:attribute>
 
 
 
     <jsp:body>
         ${data}
+        <c:if test="${sessionScope.user.role == admin}">
+            <a class="nav-link"><span class="sr-only">You'readmin</span></a>
+        </c:if>
     </jsp:body>
 </t:pagetemplate>

@@ -28,19 +28,41 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="orderLine" items="${requestScope.orderLineList}">
+                <c:forEach var="orderLine" items="${sessionScope.orderLineList}">
                     <tr>
                         <td>${orderLine.orderline_id}</td>
                         <td>${orderLine.bottom}</td>
                         <td>${orderLine.topping}</td>
                         <td>${orderLine.quantity}</td>
                         <td>${orderLine.order_id}</td>
-                        <td>${orderLine.totalPrice}</td>
+                        <td>${orderLine.totalPrice*orderLine.quantity}</td>
                         <td>
                             <button name="fjern" value="${orderLine.orderline_id}" formaction="">fjern</button>
                         </td>
                     </tr>
                 </c:forEach>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>${sessionScope.price}</td>
+                    <td>
+                        <button name="buy" value="buy" formaction="buy"> buy</button>
+                    </td>
+
+                </tr>
                 </tbody>
             </table>
         </form>

@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 @WebServlet(name = "CupcakeServlet", value = "/CupcakeServlet")
 public class CupcakeServlet extends HttpServlet {
@@ -34,8 +35,9 @@ public class CupcakeServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        log(top.toString());
-        log(bottom.toString());
+        log(Objects.requireNonNull(top).toString());
+        log(Objects.requireNonNull(bottom).toString());
+
         request.setAttribute("top", top);
         request.setAttribute("bottom", bottom);
         request.getRequestDispatcher("WEB-INF/cupcakes.jsp").forward(request, response);

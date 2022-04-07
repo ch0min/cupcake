@@ -80,7 +80,7 @@
                             </c:if>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Kurv</a>
+                            <a class="nav-link" href="">Kurv</a>
                         </li>
                     </ul>
                 </div>

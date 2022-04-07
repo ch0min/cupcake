@@ -70,24 +70,18 @@
                             <a class="nav-link" href="#">Email <span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Kurv</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">Kurv</a>
                         </li>
                     </ul>
                 </div>
-
+            </div>
             </nav>
 
 
-
-
-
-
-
-
-
-
 </header>
-
 <div id="body" class="container mt-4" style="min-height: 400px;">
     <h1><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>

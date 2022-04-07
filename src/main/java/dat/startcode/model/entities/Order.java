@@ -10,6 +10,11 @@ public class Order {
     private int totalPrice;
     private User user;
 
+    public Order(List<OrderLine> orderLineList, int totalPrice) {
+        this.orderLineList = orderLineList;
+        this.totalPrice = totalPrice;
+    }
+
     public Order(User user){
         this.user = user;
         orderLineList = new ArrayList<>();

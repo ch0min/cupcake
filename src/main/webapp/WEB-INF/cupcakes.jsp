@@ -29,7 +29,7 @@
             <label>antal:</label>
             <input type="number" id="amount" name="amount" value="1">
 
-            <input type="submit" formaction="cart" value="tilføj til kurv">
+            <input type="submit" formaction="addToShoppingCart" value="tilføj til kurv">
         </form>
 
     </jsp:body>

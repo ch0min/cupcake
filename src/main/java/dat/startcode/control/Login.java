@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // You shouldn't end up here with a GET-request, thus you get sent back to frontpage
         doPost(request, response);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("CupcakeServlet");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
             user = userMapper.login(username, password);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("CupcakeServlet").forward(request, response);
         } catch (DatabaseException e) {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage());
             request.setAttribute("errormessage", e.getMessage());

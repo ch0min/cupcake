@@ -82,6 +82,9 @@
                         <li class="nav-item">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">Kurv</a>
                         </li>
+                        <li>
+
+                        </li>
                     </ul>
                 </div>
             </div>

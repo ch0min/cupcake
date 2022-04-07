@@ -26,7 +26,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp">
+            <a class="navbar-brand" href="CupcakeServlet">
                 <img src="${pageContext.request.contextPath}/images/olskercupcakes.png" width="1400px;" height="400" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -78,9 +78,6 @@
                             <c:if test="${sessionScope.user != null }">
                                 <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                             </c:if>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">Kurv</a>

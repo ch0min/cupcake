@@ -1,13 +1,11 @@
 package dat.startcode.model.persistence;
 
 
+import dat.startcode.model.entities.Order;
 import dat.startcode.model.entities.OrderLine;
 import dat.startcode.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -69,6 +67,37 @@ public class OrderMapper implements IOrderMapper {
             throw new DatabaseException("Order med orderline_id " + orderline_id + " kunne ikke fjernes");
         }
         return result;
+    }
+
+    @Override
+    public Order createNewOrder(Order order) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        int newId = 0;
+        String sql = "insert into order (username, totalprice) values (?,?)";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, order.getUsername());
+                ps.setInt(2, order.getTotalprice());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                } else {
+                    throw new DatabaseException("Ordren med username " + order.getUsername() + " kunne ikke oprettes i databasen");
+                }
+                ResultSet idResultset = ps.getGeneratedKeys();
+                if (idResultset.next()) {
+                    newId = idResultset.getInt(1);
+                    order.setOrder_id(newId);
+                } else {
+                    order = null;
+                }
+            }
+        }
+        catch (SQLException ex) {
+            throw new DatabaseException("Ordren med username " + order.getUsername() + " kunne ikke oprettes i databasen");
+        }
+        return order;
     }
 }
 

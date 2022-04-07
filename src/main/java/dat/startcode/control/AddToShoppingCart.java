@@ -56,7 +56,6 @@ public class AddToShoppingCart extends HttpServlet {
         }
 
 
-        Order order = new Order(orderLineList,totalPrice);
 //        CupcakeMapper cm = new CupcakeMapper(connectionPool);
 //        try {
 //            cm.safeOrderDB(order);
@@ -64,7 +63,7 @@ public class AddToShoppingCart extends HttpServlet {
 //            e.printStackTrace();
 //        }
 
-        log(String.valueOf(order.getOrder_id()));
+//        log(String.valueOf(order.getOrder_id()));
 
         request.getSession().setAttribute("orderLineList", orderLineList);
         request.getSession().setAttribute("price", totalPrice);

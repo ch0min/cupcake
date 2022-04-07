@@ -27,18 +27,19 @@ public class CupcakeMapper {
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
-                    while (rs.next()) {
-                        String topName = rs.getString("top_name");
-                        int price = rs.getInt("price");
-                        tops.put(topName,price);
-                   }
+                while (rs.next()) {
+                    String topName = rs.getString("top_name");
+                    int price = rs.getInt("price");
+                    tops.put(topName, price);
                 }
-            } catch (SQLException e) {
-                throw new DatabaseException(e, "error connecting to database");
             }
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "error connecting to database");
+        }
 
         return tops;
-        }
+    }
+
     public HashMap<String, Integer> getBottom() throws DatabaseException {
         HashMap<String, Integer> bottoms = new HashMap<>();
 
@@ -50,7 +51,7 @@ public class CupcakeMapper {
                 while (rs.next()) {
                     String bottomName = rs.getString("bottom_name");
                     int price = rs.getInt("price");
-                    bottoms.put(bottomName,price);
+                    bottoms.put(bottomName, price);
                 }
             }
         } catch (SQLException e) {
@@ -64,33 +65,29 @@ public class CupcakeMapper {
     //// todo: maybe move to ordermapper!!!
 
     public boolean safeOrderDB(Order order) throws DatabaseException {
-            Logger.getLogger("web").log(Level.INFO, "");
-            String sql = "insert into 'order' (totalprice) values (?)";
-            try (Connection connection = connectionPool.getConnection()) {
-                try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                    ps.setInt(1, order.getTotalprice());
-                    int rowsAffected = ps.executeUpdate();
-                    if (rowsAffected == 1) {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "insert into 'order' (totalprice) values (?)";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, order.getTotalprice());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
 
-                        try(ResultSet rs = ps.getGeneratedKeys()) { // doesnt work
-                            if (rs.next()) {
-                                order.setOrder_id(rs.getInt(1));
-                                System.out.println(rs.getInt(1));
-                            }
-                            return true;
-                        } catch (SQLException e){
-                            throw new DatabaseException(e,"kan ikke finde id");
+                    try (ResultSet rs = ps.getGeneratedKeys()) { // doesnt work
+                        if (rs.next()) {
+                            order.setOrder_id(rs.getInt(1));
+                            System.out.println(rs.getInt(1));
                         }
-                    } else {
-                        throw new DatabaseException(" could not be inserted into the database");
+                        return true;
+                    } catch (SQLException e) {
+                        throw new DatabaseException(e, "kan ikke finde id");
                     }
+                } else {
+                    throw new DatabaseException(" could not be inserted into the database");
                 }
-            } catch (SQLException ex) {
-                throw new DatabaseException(ex, "Could not insert into database");
             }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not insert into database");
+        }
     }
-
-
-
-
 }

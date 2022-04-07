@@ -14,6 +14,7 @@ import java.util.Objects;
 
 @WebServlet(name = "CupcakeServlet", value = "/CupcakeServlet")
 public class CupcakeServlet extends HttpServlet {
+
     private ConnectionPool connectionPool;
 
     @Override
@@ -40,11 +41,11 @@ public class CupcakeServlet extends HttpServlet {
 
         request.setAttribute("top", top);
         request.setAttribute("bottom", bottom);
-        request.getRequestDispatcher("WEB-INF/cupcakes.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 }

@@ -1,5 +1,7 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.entities.Order;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.Connection;
@@ -7,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CupcakeMapper {
     ConnectionPool connectionPool;
@@ -55,5 +59,38 @@ public class CupcakeMapper {
 
         return bottoms;
     }
+
+
+    //// todo: maybe move to ordermapper!!!
+
+    public boolean safeOrderDB(Order order) throws DatabaseException {
+            Logger.getLogger("web").log(Level.INFO, "");
+            String sql = "insert into 'order' (totalprice) values (?)";
+            try (Connection connection = connectionPool.getConnection()) {
+                try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                    ps.setInt(1, order.getTotalprice());
+                    int rowsAffected = ps.executeUpdate();
+                    if (rowsAffected == 1) {
+
+                        try(ResultSet rs = ps.getGeneratedKeys()) { // doesnt work
+                            if (rs.next()) {
+                                order.setOrder_id(rs.getInt(1));
+                                System.out.println(rs.getInt(1));
+                            }
+                            return true;
+                        } catch (SQLException e){
+                            throw new DatabaseException(e,"kan ikke finde id");
+                        }
+                    } else {
+                        throw new DatabaseException(" could not be inserted into the database");
+                    }
+                }
+            } catch (SQLException ex) {
+                throw new DatabaseException(ex, "Could not insert into database");
+            }
+    }
+
+
+
 
 }

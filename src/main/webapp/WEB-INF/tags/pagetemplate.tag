@@ -28,16 +28,20 @@
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-<%--            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">--%>
-<%--                <div class="navbar-nav">--%>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>--%>
+<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>--%>
+<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>--%>
+<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">Kurv</a>--%>
 <%--                    <c:if test="${sessionScope.user == null }">--%>
 <%--                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>--%>
 <%--                    </c:if>--%>
 <%--                    <c:if test="${sessionScope.user != null }">--%>
 <%--                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>--%>
 <%--                    </c:if>--%>
-<%--                </div>--%>
+                </div>
+            </div>
         </div>
     </nav>
 </header>

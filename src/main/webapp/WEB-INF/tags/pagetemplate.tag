@@ -80,7 +80,7 @@
                             </c:if>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">kurv</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">Kurv (${sessionScope.orderLineList.size()})</a>
                         </li>
 
                     </ul>

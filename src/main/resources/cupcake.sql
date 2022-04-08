@@ -115,7 +115,7 @@ DROP TABLE IF EXISTS `cupcake`.`order_line`;
 
 CREATE TABLE IF NOT EXISTS `cupcake`.`order_line`
 (
-    `cupcake_id`  INT         NOT NULL,
+    `cupcake_id`  INT         NOT NULL AUTO_INCREMENT,
     `bottom_name` VARCHAR(45) NOT NULL,
     `top_name`    VARCHAR(45) NOT NULL,
     `quantity`    INT         NOT NULL,

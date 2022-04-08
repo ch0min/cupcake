@@ -28,18 +28,12 @@ public class BuyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        CupcakeMapper cm = new CupcakeMapper(connectionPool);
-
-
         List<OrderLine> orderLineList = (ArrayList<OrderLine>) request.getSession().getAttribute("orderLineList");
-//        List<OrderLine> orderLineList = new ArrayList<>();
 
         int totalPrice = (int) request.getSession().getAttribute("price");
-        User user = (User) request.getSession().getAttribute("User");
-//        Order order = new Order(orderLineList,totalPrice, user.getUsername());
-        // todo: brug ovenstående istedet!
+        User user = (User) request.getSession().getAttribute("user");
+        Order order = new Order(orderLineList,totalPrice, user.getUsername());
 
-        Order order = new Order(orderLineList,totalPrice, "oscar");
 
         log(String.valueOf(order));
 

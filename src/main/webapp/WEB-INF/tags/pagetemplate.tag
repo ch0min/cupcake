@@ -59,6 +59,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Kunder</a>
                     </li>
+                    <li class="nav-item">
+                        <c:if test="${sessionScope.user.role == 'admin' }">
+                            <a class="nav-link" href="/AdminPanel">Admin</a>
+                        </c:if>
+                    </li>
                 </ul>
             </div>
 

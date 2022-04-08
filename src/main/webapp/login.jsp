@@ -43,7 +43,7 @@
             <h1>Log ind</h1>
             <form action="login" method="post">
                 <label for="username">Email: </label>
-                <input type="text" class="form-control" required placeholder="Eksempel@gmail.com" autocomplete="off" id="username" name="username"/>
+                <input type="text" autofocus class="form-control" required placeholder="Eksempel@gmail.com" autocomplete="off" id="username" name="username"/>
                 <label for="password">Kode: </label>
                 <input type="password" class="form-control" required placeholder="Kode" id="password" name="password"/>
                 <input type="submit" class="btn btn-primary " value="Log ind"/>

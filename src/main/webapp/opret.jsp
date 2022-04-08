@@ -39,7 +39,7 @@
                 <h1>Opret bruger</h1>
                 <br>
                 <form action="/CreateUserServlet" method="post">
-                    <input type="email" class="form-control" autocomplete="off" placeholder="Email" name="email">
+                    <input type="email" autofocus class="form-control" autocomplete="off" placeholder="Email" name="email">
                     <input type="password" class="form-control" placeholder="Kode" name="password">
                     <input type="password" class="form-control" placeholder="Gentag kode" name="password">
                     <input type="submit" class="btn btn-primary" value="Opret">

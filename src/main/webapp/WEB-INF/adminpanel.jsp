@@ -9,12 +9,8 @@
 
     </jsp:attribute>
 
-
-
     <jsp:body>
+        <h1>Alle ordrer</h1>
         ${data}
-        <c:if test="${sessionScope.user.role == admin}">
-            <a class="nav-link"><span class="sr-only">You'readmin</span></a>
-        </c:if>
     </jsp:body>
 </t:pagetemplate>

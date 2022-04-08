@@ -32,7 +32,7 @@ public class BuyServlet extends HttpServlet {
 
         int totalPrice = (int) request.getSession().getAttribute("price");
         User user = (User) request.getSession().getAttribute("user");
-        Order order = new Order(orderLineList,totalPrice, user.getUsername());
+        Order order = new Order(orderLineList,totalPrice, user.getUsername());//todo: error handling if user=null.
 
 
         log(String.valueOf(order));

@@ -11,6 +11,21 @@
 
     <jsp:body>
         <h1>Alle ordrer</h1>
-        ${data}
+        <c:forEach items="${data}" var="entry">
+            ${entry}
+            <p id="time"></p>
+            <hr>
+        </c:forEach>
+
+        <script>
+            var currentdate = new Date();
+            var datetime = "Bestilt: "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + "+"
+                + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getFullYear();
+            document.getElementById("time").innerHTML = datetime;
+        </script>
     </jsp:body>
 </t:pagetemplate>

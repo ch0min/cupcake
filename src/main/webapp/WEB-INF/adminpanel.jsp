@@ -13,7 +13,7 @@
         <h1>Alle ordrer</h1>
         <c:forEach items="${data}" var="entry">
             ${entry}
-            <p id="time"></p>
+            <p class="time"></p>
             <hr>
         </c:forEach>
 
@@ -21,11 +21,15 @@
             var currentdate = new Date();
             var datetime = "Bestilt: "
                 + currentdate.getHours() + ":"
-                + currentdate.getMinutes() + "+"
+                + currentdate.getMinutes() + " "
                 + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/"
                 + currentdate.getFullYear();
-            document.getElementById("time").innerHTML = datetime;
+            var s = document.getElementsByClassName("time").innerHTML = datetime;
+
+            for (let i = 0; i < s.length; i++) {
+                console.log(s[i].innerHTML);
+            }
         </script>
     </jsp:body>
 </t:pagetemplate>

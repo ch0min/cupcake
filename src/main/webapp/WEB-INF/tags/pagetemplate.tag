@@ -71,9 +71,9 @@
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <c:if test="${sessionScope.user != null }">
-                                <a class="nav-link"><span class="sr-only">${sessionScope.user.username}</span></a>
+                                <a class="nav-link">${sessionScope.user.username}></a>
                             </c:if>
                         </li>
                         <li class="nav-item">

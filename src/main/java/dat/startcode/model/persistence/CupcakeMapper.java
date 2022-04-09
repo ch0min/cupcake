@@ -1,13 +1,11 @@
 package dat.startcode.model.persistence;
 
 import dat.startcode.model.entities.Order;
+import dat.startcode.model.entities.OrderLine;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,30 +62,62 @@ public class CupcakeMapper {
 
     //// todo: maybe move to ordermapper!!!
 
-    public boolean safeOrderDB(Order order) throws DatabaseException {
+    public void safeOrderDB(Order order) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        String sql = "insert into 'order' (totalprice) values (?)";
+        String sql = "insert into cupcake.order (username,totalprice) values (?, ?)";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, order.getUsername());
+                ps.setInt(2, order.getTotalprice());
+//                int rowsAffected = ps.executeUpdate();
+//                if (rowsAffected == 1) {
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                        order.setOrder_id(rs.getInt(1));
+//                        } catch (SQLException e){
+//                            throw new DatabaseException(e,"kan ikke finde id");
+//
+//                    for (OrderLine o : order.getOrderLineList()) {
+//                        o.setOrder_id(order.getOrder_id());
+//                        insertOrderLine(o);
+                    }
+//                } else {
+//                    throw new DatabaseException(" could not be inserted into the database");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+//        } catch (SQLException ex) {
+//            throw new DatabaseException(ex, "Could not insert into database");
+//        }
+    }
+
+    public void insertOrderLine(OrderLine orderLine) {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "insert into order_line (bottom_name, top_name, quantity, order_id, totalprice) values (?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, order.getTotalprice());
+                ps.setString(1, orderLine.getBottom());
+                ps.setString(2, orderLine.getTopping());
+                ps.setInt(3, orderLine.getQuantity());
+                ps.setInt(4, orderLine.getOrder_id());
+                ps.setInt(5, orderLine.getTotalPrice());
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-
-                    try (ResultSet rs = ps.getGeneratedKeys()) { // doesnt work
-                        if (rs.next()) {
-                            order.setOrder_id(rs.getInt(1));
-                            System.out.println(rs.getInt(1));
-                        }
-                        return true;
-                    } catch (SQLException e) {
-                        throw new DatabaseException(e, "kan ikke finde id");
-                    }
+                    System.out.println("yes");
                 } else {
-                    throw new DatabaseException(" could not be inserted into the database");
+                    throw new DatabaseException("The orderline could not be inserted into the database");
                 }
+            } catch (DatabaseException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException ex) {
-            throw new DatabaseException(ex, "Could not insert into database");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
+
+
+
+    //todo: update user balance after purchaes.
+
 }

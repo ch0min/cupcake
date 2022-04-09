@@ -11,27 +11,28 @@ public class Order {
     private int totalprice;
 
 
-    public Order(List<OrderLine> orderLineList, int totalPrice) {
+    public Order(List<OrderLine> orderLineList, int totalPrice, String username) {
         this.orderLineList = orderLineList;
         this.totalprice = totalPrice;
+        this.username=username;
     }
 
     // dto
-    private String role;
-
-    public Order(int order_id, String username, int totalprice) {
-        this.order_id = order_id;
-        this.username = username;
-        this.totalprice = totalprice;
-    }
+//    private String role;
+//
+//    public Order(int order_id, String username, int totalprice) {
+//        this.order_id = order_id;
+//        this.username = username;
+//        this.totalprice = totalprice;
+//    }
 
     // dto
-    public Order(int order_id, String username, int totalprice, String role) {
-        this.order_id = order_id;
-        this.username = username;
-        this.totalprice = totalprice;
-        this.role = role;
-    }
+//    public Order(int order_id, String username, int totalprice, String role) {
+//        this.order_id = order_id;
+//        this.username = username;
+//        this.totalprice = totalprice;
+//        this.role = role;
+//    }
 
     public int getOrder_id() {
         return order_id;
@@ -56,6 +57,22 @@ public class Order {
     public void setTotalprice(int totalprice) {
         this.totalprice = totalprice;
     }
+
+    public List<OrderLine> getOrderLineList() {
+        return orderLineList;
+    }
+
+//    public String getRole() {
+//        return role;
+//    }
+
+    public void setOrderLineList(List<OrderLine> orderLineList) {
+        this.orderLineList = orderLineList;
+    }
+
+//    public void setRole(String role) {
+//        this.role = role;
+//    }
 
     @Override
     public String toString() {

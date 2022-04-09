@@ -14,12 +14,11 @@ import java.util.List;
 @WebServlet(name = "addToShoppingCart", value = "/addToShoppingCart")
 public class AddToShoppingCart extends HttpServlet {
     private List<OrderLine> orderLineList;
-    private ConnectionPool connectionPool;
 
     @Override
     public void init() throws ServletException {
         orderLineList = new ArrayList<>();
-        this.connectionPool = ApplicationStart.getConnectionPool();
+        ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
     }
 
     @Override

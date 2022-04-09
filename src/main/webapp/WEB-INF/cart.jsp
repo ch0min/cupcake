@@ -55,7 +55,7 @@
                     <td></td>
                     <td>${sessionScope.price}</td>
                     <td>
-                        <button name="buy" value="buy" formaction="buy"> buy</button>
+                        <button name="buy" value="buy" formaction="BuyServlet"> buy</button>
                     </td>
 
                 </tr>

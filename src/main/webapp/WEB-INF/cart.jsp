@@ -23,7 +23,6 @@
                     <th>Bund</th>
                     <th>Topping</th>
                     <th>Antal</th>
-                    <th>Order ID</th>
                     <th>Pris</th>
                 </tr>
                 </thead>
@@ -34,7 +33,6 @@
                         <td>${orderLine.bottom}</td>
                         <td>${orderLine.topping}</td>
                         <td>${orderLine.quantity}</td>
-                        <td>${orderLine.order_id}</td>
                         <td>${orderLine.totalPrice*orderLine.quantity}</td>
                         <td>
                             <button name="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}" formaction="removefromcart">fjern</button>
@@ -48,11 +46,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
 
                 </tr>
                 <tr>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

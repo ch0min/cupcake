@@ -1,11 +1,8 @@
 package dat.startcode.control;
 
 import dat.startcode.model.config.ApplicationStart;
-import dat.startcode.model.entities.Order;
 import dat.startcode.model.entities.OrderLine;
-import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
-import dat.startcode.model.persistence.CupcakeMapper;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -49,11 +46,16 @@ public class AddToShoppingCart extends HttpServlet {
             orderLineList.add(ol);
         }
 
-        int totalPrice = 0;
+        int totalSize = 0;
+        for (OrderLine o : orderLineList) {
+            totalSize = o.getQuantity() + totalSize;
+        }
 
+        int totalPrice = 0;
         for (OrderLine o : orderLineList) {
             totalPrice = totalPrice + (o.getTotalPrice()*o.getQuantity());
         }
+
 
 
 //        CupcakeMapper cm = new CupcakeMapper(connectionPool);
@@ -66,6 +68,7 @@ public class AddToShoppingCart extends HttpServlet {
 //        log(String.valueOf(order.getOrder_id()));
 
         request.getSession().setAttribute("orderLineList", orderLineList);
+        request.getSession().setAttribute("size", totalSize);
         request.getSession().setAttribute("price", totalPrice);
 
         request.getRequestDispatcher("CupcakeServlet").forward(request, response);

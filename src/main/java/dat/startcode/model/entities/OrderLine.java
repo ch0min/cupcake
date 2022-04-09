@@ -99,5 +99,10 @@ public class OrderLine {
     public int hashCode() {
         return Objects.hash(getOrderline_id(), getTopping(), getBottom(), getOrder_id(), getTotalPrice(), getQuantity());
     }
+
+    public int getRealPrice() {
+        return totalPrice * quantity;
+    }
+
 }
 

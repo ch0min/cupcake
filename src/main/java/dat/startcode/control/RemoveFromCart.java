@@ -33,13 +33,19 @@ public class RemoveFromCart extends HttpServlet {
         int orderline_id = Integer.parseInt(idString);
 
         List<OrderLine> ol = (List<OrderLine>) request.getSession().getAttribute("orderLineList");
+
         int price = (int) request.getSession().getAttribute("price");
-        price = price - ol.get(orderline_id).getTotalPrice();
+        price = price - ol.get(orderline_id).getRealPrice();
+
+        int totalSize = (int) request.getSession().getAttribute("size");
+        totalSize = totalSize - ol.get(orderline_id).getQuantity();
         ol.remove(orderline_id);
 
-        request.getSession().setAttribute("orderLineList", ol);
-        request.getSession().setAttribute("price", price);
 
+        request.getSession().setAttribute("price", price);
+        request.getSession().setAttribute("size", totalSize);
+
+        request.getSession().setAttribute("orderLineList", ol);
 //        OrderMapper orderMapper = new OrderMapper(connectionPool);
 //        try {
 //            orderMapper.removeOrderline(orderline_id);

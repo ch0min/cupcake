@@ -14,5 +14,19 @@ th, td {
    vertical-align: middle;
 }
 
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button img{
+    margin-right: auto;
+    border: 1px solid red;
+}
+
+button span{
+    border: 1px solid red;
+    margin-right: auto;
+}
 
 

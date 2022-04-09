@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <style>
         <jsp:invoke fragment="style"/>
     </style>
@@ -54,11 +54,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/"><i class='fas fa-clipboard' style='font-size:22px'></i>
-                            Ordrer <span class="sr-only"></span></a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/"> Ordrer <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
+                        <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunder</a>
+                        </c:if>
                     </li>
                     <li class="nav-item">
                         <c:if test="${sessionScope.user.role == 'admin' }">
@@ -78,17 +79,22 @@
                             </c:if>
                         </li>
                         <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/CupcakeServlet"><i class="bi bi-house-door" style="font-size: 18px"></i>
+                                Hjem </a>
+                        </li>
                             <c:if test="${sessionScope.user == null }">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp"><i class="bi bi-box-arrow-in-right" style="font-size: 18px"></i>
+                                    Log ind </a>
                             </c:if>
                             <c:if test="${sessionScope.user != null }">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-right" style="font-size: 18px"></i>
+                                    Log ud </a>
                             </c:if>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart">Kurv (${sessionScope.orderLineList.size() + 0})</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart"><i class="bi bi-cart" style="font-size: 18px"></i>(${sessionScope.size + 0})</a>
                         </li>
-
                     </ul>
                 </div>
             </div>

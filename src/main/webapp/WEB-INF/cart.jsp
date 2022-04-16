@@ -35,7 +35,7 @@
                         <td>${orderLine.quantity}</td>
                         <td>${orderLine.totalPrice*orderLine.quantity}</td>
                         <td>
-                            <button name="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}" formaction="removefromcart">fjern</button>
+                            <button name="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}" formaction="removefromcart">Fjern</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -55,7 +55,7 @@
                     <td></td>
                     <td>${sessionScope.price}</td>
                     <td>
-                        <button name="buy" value="buy" formaction="BuyServlet"> buy</button>
+                        <button name="buy" value="buy" formaction="BuyServlet">Køb nu</button>
                     </td>
 
                 </tr>

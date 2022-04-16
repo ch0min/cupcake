@@ -3,45 +3,43 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
-<t:pagetemplate>
-    <jsp:attribute name="header">
-         Velkommen ombord
+<div class="frontpage">
+    <t:pagetemplate>
+        <jsp:attribute name="header">
     </jsp:attribute>
-
-    <jsp:attribute name="footer">
-
+        <jsp:attribute name="footer">
     </jsp:attribute>
+        <jsp:body>
+            <h1>Velkommen ombord</h1>
+            <h4>Øens bedste cupcakes <br> Vælg og bestil her:</h4>
 
-    <jsp:body>
-        <h3>Øens bedste cupcakes. Vælg og bestil her:</h3>
-        <form action="addToShoppingCart">
-            <label> vælg bund:</label>
-            <select name="bottom">
-                <c:forEach items="${requestScope.bottom}" var="bottoms">
-                    <option value="${bottoms}"> ${bottoms} </option>
-                </c:forEach>
-            </select>
-            <label> vælg topping:</label>
-            <select name="top">
-                <c:forEach items="${requestScope.top}" var="tops">
-                    <option value="${tops}"> ${tops} </option>
-                </c:forEach>
-            </select>
-            <label>antal:</label>
-            <input type="number" id="amount" name="amount" value="1">
+            <div class="booking-form-box">
+                <div class="dropdown">
+                    <div id="myDropdown" class="dropdown-content">
+                        <form action="addToShoppingCart">
+                            <label>Vælg bund: </label><br>
+                            <select name="bottom">
+                                <c:forEach items="${requestScope.bottom}" var="bottoms">
+                                    <option value="${bottoms}"> ${bottoms} </option>
+                                </c:forEach>
+                            </select><br>
 
-            <input type="submit" formaction="addToShoppingCart" value="tilføj til kurv">
-        </form>
+                            <label>Vælg topping: </label><br>
+                            <select name="top">
+                                <c:forEach items="${requestScope.top}" var="tops">
+                                    <option value="${tops}"> ${tops} </option>
+                                </c:forEach>
+                            </select><br>
+                            <label> Antal: </label><br>
+                            <input type="number" id="amount" name="amount" value="1"><br><br>
+                            <input type="submit" formaction="addToShoppingCart" value="Tilføj til kurv">
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-<%--        <c:if test="${sessionScope.user != null}">--%>
-<%--            <p>You are logged in with the role of "${sessionScope.user.role}".</p>--%>
-<%--        </c:if>--%>
 
-<%--        <c:if test="${sessionScope.user == null}">--%>
-<%--            <p>You are not logged in yet. You can do it here: <a--%>
-<%--                    href="login.jsp">Login</a></p>--%>
-<%--        </c:if>--%>
+        </jsp:body>
 
-    </jsp:body>
-
-</t:pagetemplate>
+    </t:pagetemplate>
+</div>

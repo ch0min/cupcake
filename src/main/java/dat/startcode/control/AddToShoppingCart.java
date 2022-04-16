@@ -29,7 +29,7 @@ public class AddToShoppingCart extends HttpServlet {
         int price = Integer.parseInt(bottom[1])+Integer.parseInt(topping[1]);
         int amount = Integer.parseInt(request.getParameter("amount"));
 
-        OrderLine ol= new OrderLine(topping[0],bottom[0],price,amount);
+        OrderLine ol = new OrderLine(topping[0],bottom[0],price,amount);
         log(ol.toString());
 
         boolean skipAdd = false;
@@ -52,19 +52,8 @@ public class AddToShoppingCart extends HttpServlet {
 
         int totalPrice = 0;
         for (OrderLine o : orderLineList) {
-            totalPrice = totalPrice + (o.getTotalPrice()*o.getQuantity());
+            totalPrice = totalPrice + (o.getTotalPrice() * o.getQuantity());
         }
-
-
-
-//        CupcakeMapper cm = new CupcakeMapper(connectionPool);
-//        try {
-//            cm.safeOrderDB(order);
-//        } catch (DatabaseException e) {
-//            e.printStackTrace();
-//        }
-
-//        log(String.valueOf(order.getOrder_id()));
 
         request.getSession().setAttribute("orderLineList", orderLineList);
         request.getSession().setAttribute("size", totalSize);

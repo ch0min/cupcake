@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><jsp:invoke fragment="header"/></title>
+    <title><jsp:invoke fragment="header"/>Olsker Cupcakes</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,8 +23,7 @@
 </head>
 <body>
 <header>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg" >
         <div class="container">
             <a class="navbar-brand" href="CupcakeServlet">
                 <img src="${pageContext.request.contextPath}/images/olskercupcakes.png" width="1400px;" height="400" class="img-fluid"/>
@@ -43,9 +42,7 @@
 </header>
 
 <header>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
         <a class="navbar" href="CupcakeServlet"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,22 +51,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/"> Ordrer <span class="sr-only"></span></a>
+                    <c:if test="${sessionScope.user == null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp"><i class="bi bi-box-arrow-in-right" style="font-size: 18px"></i> LOG IND</a>
+                    </c:if>
+                    <c:if test="${sessionScope.user != null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-right" style="font-size: 18px"></i> LOG UD</a>
+                    </c:if>
                     </li>
                     <li class="nav-item">
                         <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunder</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">KUNDER</a>
                         </c:if>
                     </li>
                     <li class="nav-item">
                         <c:if test="${sessionScope.user.role == 'admin' }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/AdminPanel">Admin</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/AdminPanel">ADMIN</a>
                         </c:if>
                     </li>
                 </ul>
             </div>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav ml-auto">
@@ -79,18 +81,11 @@
                             </c:if>
                         </li>
                         <li class="nav-item">
-                        <li class="nav-item">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/CupcakeServlet"><i class="bi bi-house-door" style="font-size: 18px"></i>
-                                Hjem </a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/CupcakeServlet"><i class="bi bi-house-door"></i> HJEM</a>
                         </li>
-                            <c:if test="${sessionScope.user == null }">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp"><i class="bi bi-box-arrow-in-right" style="font-size: 18px"></i>
-                                    Log ind </a>
-                            </c:if>
-                            <c:if test="${sessionScope.user != null }">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-right" style="font-size: 18px"></i>
-                                    Log ud </a>
-                            </c:if>
+                        <li class="nav-item active">
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/"><i class="bi bi-box2"></i>
+                                ORDRE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart"><i class="bi bi-cart" style="font-size: 18px"></i>(${sessionScope.size + 0})</a>
@@ -99,9 +94,10 @@
                 </div>
             </div>
             </nav>
-
-
+        </div>
+    </nav>
 </header>
+
 <div id="body" class="container mt-4" style="min-height: 400px;">
     <h1><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>
@@ -120,8 +116,8 @@
             <p>&copy; 2022 Bornholm</p>
         </div>
         <div class="col">
-            Kæft nogen cupcakes!<br/>
-            Best cupcakes 2022 - Allknowing
+            Cupcakes der vil noget!<br/>
+            "Bedste Cupcakes Danmark Pris 2022"
         </div>
     </div>
 

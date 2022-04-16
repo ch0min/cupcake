@@ -104,5 +104,19 @@ public class OrderLine {
         return totalPrice * quantity;
     }
 
+    public int incrementQ() {
+        int data = 0;
+        data = data + 1;
+        return data;
+
+    }
+
+    public int decrementQ() {
+        int data = 0;
+        data = data - 1;
+        return data;
+
+    }
+
 }
 

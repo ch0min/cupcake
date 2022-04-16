@@ -134,6 +134,36 @@ table {
     margin: 1% auto 0;
 }
 
+#returnToCart {
+    width: 150px;
+    font-size: 15px;
+    background-color: #f5c041;
+    border-radius: 25px;
+    margin: 1% auto 0;
+}
+
+/*#confirmQ {*/
+/*    width: 60px;*/
+/*    font-size: 10px;*/
+/*    background-color: #f5c041;*/
+/*    border-radius: 25px;*/
+/*}*/
+
+/*#btIncr {*/
+/*    width: 25px;*/
+/*    font-size: 20px;*/
+/*    background-color: #f8db95;*/
+/*    border-radius: 25px;*/
+/*    margin: 1% auto 0;*/
+/*}*/
+
+/*#btDecr {*/
+/*    width: 25px;*/
+/*    font-size: 20px;*/
+/*    background-color: #f8db95;*/
+/*    border-radius: 25px;*/
+/*    margin: 1% auto 0;*/
+/*}*/
 
 
 

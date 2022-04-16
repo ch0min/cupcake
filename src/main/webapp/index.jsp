@@ -32,7 +32,8 @@
                             </select><br>
                             <label> Antal: </label><br>
                             <input type="number" id="amount" name="amount" value="1"><br><br>
-                            <input type="submit" formaction="addToShoppingCart" value="Tilføj til kurv">
+                            <input type="submit" id="addToCart" formaction="addToShoppingCart" value="Tilføj til Kurv">
+                            <input type="submit" id="returnToCart" formaction="cart" value="Se din Kurv">
                         </form>
                     </div>
                 </div>

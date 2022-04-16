@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page errorPage="../error.jsp" isErrorPage="false" %>
 
+<div class="cartdesign">
 <t:pagetemplate>
     <jsp:attribute name="header">
              Kurv
@@ -35,7 +36,7 @@
                         <td>${orderLine.quantity}</td>
                         <td>${orderLine.totalPrice*orderLine.quantity}</td>
                         <td>
-                            <button name="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}" formaction="removefromcart">Fjern</button>
+                            <button name="fjern" id="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}" formaction="removefromcart">Fjern</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -55,7 +56,7 @@
                     <td></td>
                     <td>${sessionScope.price}</td>
                     <td>
-                        <button name="buy" value="buy" formaction="BuyServlet">Køb nu</button>
+                        <button name="buy" id="buy" value="buy" formaction="BuyServlet">Køb nu</button>
                     </td>
 
                 </tr>
@@ -64,4 +65,4 @@
         </form>
     </jsp:body>
 </t:pagetemplate>
-
+</div>

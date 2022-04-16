@@ -42,7 +42,7 @@
 </header>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cba58e; font-weight: bold">
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #d09d6d; font-weight: bold">
         <div class="container">
         <a class="navbar" href="CupcakeServlet"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
                 </ul>
             </div>
 
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cba58e; font-weight: bold">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d09d6d; font-weight: bold">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav ml-auto">

@@ -23,10 +23,10 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg" >
+    <nav class="navbar navbar-expand-lg" style="background-color: #ffdeb4; font-weight: bold">
         <div class="container">
             <a class="navbar-brand" href="CupcakeServlet">
-                <img src="${pageContext.request.contextPath}/images/olskercupcakes.png" width="1400px;" height="400" class="img-fluid"/>
+                <img src="${pageContext.request.contextPath}/images/CupcakeBanner.png" width="1300px" height="400"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
 </header>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #cba58e; font-weight: bold">
         <div class="container">
         <a class="navbar" href="CupcakeServlet"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
                 </ul>
             </div>
 
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cba58e; font-weight: bold">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav ml-auto">
@@ -98,7 +98,7 @@
     </nav>
 </header>
 
-<div id="body" class="container mt-4" style="min-height: 400px;">
+<div id="body" class="container mt-4" style="min-height: 800px;">
     <h1><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>
 </div>

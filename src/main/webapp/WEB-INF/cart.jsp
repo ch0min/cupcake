@@ -7,11 +7,9 @@
 <div class="cartdesign">
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Kurv
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Kurv
     </jsp:attribute>
 
     <jsp:body>

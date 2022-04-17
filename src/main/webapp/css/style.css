@@ -8,6 +8,10 @@
     overflow-x: hidden;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 h1 {
     text-align: center;
 }
@@ -25,7 +29,6 @@ h4 {
 .frontpage {
     background-image: url(../images/cups.png);
     background-size: cover;
-
 }
 
 .booking-form-box {
@@ -96,6 +99,7 @@ input{
 
 .form-control{
     border-radius:0px;
+    text-transform: none !important;
 }
 
 .form-control:focus{

@@ -59,7 +59,7 @@
                     </c:if>
                     </li>
                     <li class="nav-item">
-                        <c:if test="${sessionScope.user != null }">
+                        <c:if test="${sessionScope.user.role == 'admin' }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">KUNDER</a>
                         </c:if>
                     </li>

@@ -14,6 +14,13 @@ public class User {
         this.role = role;
     }
 
+    public User(String username, String password, String role, int balance) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "User{" +

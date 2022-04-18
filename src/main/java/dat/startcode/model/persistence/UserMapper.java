@@ -1,9 +1,12 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.entities.OrderLine;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,5 +70,29 @@ public class UserMapper implements IUserMapper {
         return user;
     }
 
+    @Override
+    public List<User> retrieveAllUsers() throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
 
+        List<User> userList = new ArrayList<>();
+
+        String sql = "SELECT username, password, role, balance FROM cupcake.user";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String role = rs.getString("role");
+                    int balance = rs.getInt("balance");
+                    User newUser = new User(username, password, role, balance);
+                    userList.add(newUser);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Error while loading 'cupcake' from Database.");
+        }
+        return userList;
+    }
 }

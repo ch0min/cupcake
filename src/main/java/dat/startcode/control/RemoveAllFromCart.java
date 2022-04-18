@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "removefromcart", urlPatterns = {"/removefromcart"})
-public class RemoveFromCart extends HttpServlet {
+@WebServlet(name = "removeallfromcart", urlPatterns = {"/removeallfromcart"})
+public class RemoveAllFromCart extends HttpServlet {
 
     private ConnectionPool connectionPool;
 
@@ -29,23 +30,21 @@ public class RemoveFromCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String idString = request.getParameter("fjern");
-        int orderline_id = Integer.parseInt(idString);
-
         List<OrderLine> ol = (List<OrderLine>) request.getSession().getAttribute("orderLineList");
 
         int totalSize = (int) request.getSession().getAttribute("size");
-        totalSize = totalSize - ol.get(orderline_id).getQuantity();
+        totalSize = totalSize - totalSize;
 
         int price = (int) request.getSession().getAttribute("price");
-        price = price - ol.get(orderline_id).getRealPrice();
+        price = price - price;
 
-        ol.remove(orderline_id);
-
+        ol.clear();
         request.getSession().setAttribute("size", totalSize);
         request.getSession().setAttribute("price", price);
         request.getSession().setAttribute("orderLineList", ol);
 
-        request.getRequestDispatcher("cart").forward(request, response);
+
+        request.getRequestDispatcher("CupcakeServlet").forward(request, response);
+
     }
 }

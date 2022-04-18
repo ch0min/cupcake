@@ -4,11 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
-<div class="login">
+<div class="loginbg">
 <t:pagetemplate>
     <jsp:attribute name="style">
     </jsp:attribute>
     <jsp:body>
+        <div class="login">
         <div class="form mx-auto">
             <h1>Log ind</h1>
             <form action="login" method="post">
@@ -20,7 +21,7 @@
                 <a href="opret.jsp" class="opretBruger">Opret bruger</a>
             </form>
         </div>
-
+        </div>
     </jsp:body>
 </t:pagetemplate>
 </div>

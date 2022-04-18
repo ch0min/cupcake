@@ -66,7 +66,7 @@ public class CupcakeMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "insert into cupcake.order (username,totalprice) values (?, ?)";
         try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, order.getUsername());
                 ps.setInt(2, order.getTotalprice());
 //                int rowsAffected = ps.executeUpdate();
@@ -74,14 +74,14 @@ public class CupcakeMapper {
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 rs.next();
-                        order.setOrder_id(rs.getInt(1));
+                order.setOrder_id(rs.getInt(1));
 //                        } catch (SQLException e){
 //                            throw new DatabaseException(e,"kan ikke finde id");
 //
 //                    for (OrderLine o : order.getOrderLineList()) {
 //                        o.setOrder_id(order.getOrder_id());
 //                        insertOrderLine(o);
-                    }
+            }
 //                } else {
 //                    throw new DatabaseException(" could not be inserted into the database");
         } catch (SQLException e) {
@@ -117,7 +117,19 @@ public class CupcakeMapper {
     }
 
 
-
     //todo: update user balance after purchaes.
+    public void withdraw(int i, String username) {
+        String sql = "UPDATE cupcake.user SET balance = balance-"+i+" WHERE username='"+username+"'";
+        System.out.println(sql);
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+    }
 }

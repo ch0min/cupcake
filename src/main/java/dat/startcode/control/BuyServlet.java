@@ -43,6 +43,7 @@ public class BuyServlet extends HttpServlet {
                 o.setOrder_id(order.getOrder_id());
                 cm.insertOrderLine(o);
             }
+            cm.withdraw(order.getTotalprice(),order.getUsername());
 
         } catch (DatabaseException e) {
             e.printStackTrace();

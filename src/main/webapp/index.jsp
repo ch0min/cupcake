@@ -32,15 +32,17 @@
                             </select><br>
                             <label> Antal: </label><br>
                             <input type="number" id="amount" name="amount" value="1"><br><br>
+                            <c:if test="${sessionScope.user == null }">
+                            <input type="submit" id="login" formaction="login.jsp" value="Log ind">
+                            </c:if>
+                            <c:if test="${sessionScope.user != null }">
                             <input type="submit" id="addToCart" formaction="addToShoppingCart" value="Tilføj til Kurv">
                             <input type="submit" id="returnToCart" formaction="cart" value="Se din Kurv">
+                            </c:if>
                         </form>
                     </div>
                 </div>
             </div>
-
-
         </jsp:body>
-
     </t:pagetemplate>
 </div>

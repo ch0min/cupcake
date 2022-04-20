@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page errorPage="../error.jsp" isErrorPage="false" %>
 
-<div class="cartdesign">
+<div class="cartdesignbg">
     <t:pagetemplate>
     <jsp:attribute name="header">
     </jsp:attribute>
@@ -13,6 +13,9 @@
     </jsp:attribute>
 
         <jsp:body>
+            <h1>Kurv</h1>
+
+            <div class="cartdesign">
             <form method="post">
                 <table class="table table-striped">
                     <thead>
@@ -21,7 +24,7 @@
                         <th>Bund</th>
                         <th>Topping</th>
                         <th>Antal</th>
-                        <th>Pris</th>
+                        <th>Pris(kr)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,20 +34,6 @@
                             <td>${orderLine.bottom}</td>
                             <td>${orderLine.topping}</td>
                             <td>${orderLine.quantity}</td>
-
-<%--                                                            <td>--%>
-<%--                                                                <input type="number" id="amount" name="amount" value="${orderLine.quantity}" formaction="addToShoppingCart"><br><br>--%>
-<%--                                                                <input type="submit" id="confirmQ" formaction="cart" value="Bekræft">--%>
-<%--                                                            </td>--%>
-
-<%--                                                        <div class="quantityIncDecr">--%>
-<%--                                                        <td>--%>
-<%--                                                            <button onclick="${orderLine.incrementQ()}" id="btIncr">+</button>--%>
-<%--                                                                ${orderLine.quantity}--%>
-<%--                                                            <button onclick="${orderLine.decrementQ()}" id="btDecr">-</button>--%>
-<%--                                                        </td>--%>
-<%--                                                        </div>--%>
-
                             <td>${orderLine.totalPrice*orderLine.quantity}</td>
                             <td>
                                 <button name="fjern" id="fjern" value="${sessionScope.orderLineList.indexOf(orderLine)}"
@@ -76,7 +65,7 @@
                     </tbody>
                 </table>
             </form>
-
+            </div>
         </jsp:body>
     </t:pagetemplate>
 </div>

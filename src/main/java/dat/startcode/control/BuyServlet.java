@@ -49,7 +49,7 @@ public class BuyServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("receipt").forward(request, response);
     }
 
     @Override

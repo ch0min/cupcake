@@ -42,7 +42,7 @@
 </header>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #d09d6d; font-weight: bold">
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #d09d6d; font-weight: bold; font-size: 24px">
         <div class="container">
         <a class="navbar" href="CupcakeServlet"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,26 +52,26 @@
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                     <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp"><i class="bi bi-box-arrow-in-right" style="font-size: 18px"></i> LOG IND</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp"><i class="bi bi-box-arrow-in-right" style="font-size: 18px"></i> LOG IND |</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-right" style="font-size: 18px"></i> LOG UD</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout"><i class="bi bi-box-arrow-right" style="font-size: 18px"></i> LOG UD |</a>
                     </c:if>
                     </li>
                     <li class="nav-item">
                         <c:if test="${sessionScope.user.role == 'admin' }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">KUNDER</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/useroverview">BRUGEROVERSIGT</a>
                         </c:if>
                     </li>
                     <li class="nav-item">
                         <c:if test="${sessionScope.user.role == 'admin' }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/AdminPanel">ADMIN</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/AdminPanel">| ADMIN |</a>
                         </c:if>
                     </li>
                 </ul>
             </div>
 
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d09d6d; font-weight: bold">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d09d6d; font-weight: bold; font-size: 24px">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav ml-auto">
@@ -81,14 +81,10 @@
                             </c:if>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/CupcakeServlet"><i class="bi bi-house-door"></i> HJEM</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/"><i class="bi bi-box2"></i>
-                                ORDRE</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/CupcakeServlet">| <i class="bi bi-house-door"></i>HJEM |</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart"><i class="bi bi-cart" style="font-size: 18px"></i>(${sessionScope.size + 0})</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/cart"><i class="bi bi-cart" style="font-size: 24px"></i>(${sessionScope.size + 0})</a>
                         </li>
                     </ul>
                 </div>

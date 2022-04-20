@@ -1,0 +1,21 @@
+@startuml
+object OrderLine {
+topping
+bottom
+quantity
+price
+}
+
+object Order {
+totalPrice
+}
+
+object User {
+name
+role
+balance
+}
+
+OrderLine "0" -o "*" Order
+Order "1" o- "*"User
+@enduml
